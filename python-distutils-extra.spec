@@ -6,10 +6,10 @@
 #
 Name     : python-distutils-extra
 Version  : 2.39
-Release  : 7
+Release  : 8
 URL      : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz
 Source0  : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz
-Source99 : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz.asc
+Source1  : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz.asc
 Summary  : Enhancements to the Python build system
 Group    : Development/Tools
 License  : GPL-2.0
@@ -50,13 +50,15 @@ python3 components for the python-distutils-extra package.
 
 %prep
 %setup -q -n python-distutils-extra-2.39
+cd %{_builddir}/python-distutils-extra-2.39
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560911114
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583211897
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -72,7 +74,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/python-distutils-extra
-cp LICENSE %{buildroot}/usr/share/package-licenses/python-distutils-extra/LICENSE
+cp %{_builddir}/python-distutils-extra-2.39/LICENSE %{buildroot}/usr/share/package-licenses/python-distutils-extra/4d1d37f306ed270cda5b2741fac3abf0a7b012e5
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -83,7 +85,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/python-distutils-extra/LICENSE
+/usr/share/package-licenses/python-distutils-extra/4d1d37f306ed270cda5b2741fac3abf0a7b012e5
 
 %files python
 %defattr(-,root,root,-)

@@ -6,7 +6,7 @@
 #
 Name     : python-distutils-extra
 Version  : 2.39
-Release  : 9
+Release  : 10
 URL      : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz
 Source0  : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz
 Source1  : https://launchpad.net/python-distutils-extra/trunk/2.39/+download/python-distutils-extra-2.39.tar.gz.asc
